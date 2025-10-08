@@ -47,9 +47,17 @@ public class US_104 extends BaseDriver {
         wait.until(ExpectedConditions.elementToBeClickable(loginBtn));
         loginBtn.click();
 
-        WebElement myAccountText = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div > h1")));
+        WebElement myAccountBtn = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[@title='Hesabım']")));
+        wait.until(ExpectedConditions.elementToBeClickable(myAccountBtn));
+        myAccountBtn.click();
+
+        WebElement myAccountText = driver.findElement(By.cssSelector("body > h1"));
         wait.until(ExpectedConditions.visibilityOf(myAccountText));
-        Assert.assertTrue("'Akakçe ile En Ucuzu Keşfet!' text not visible", myAccountText.isDisplayed());
+        String actual = myAccountText.getText();
+        String expeted = "Hesabım";
+        Assert.assertEquals("No 'Hesabim' text", expeted,actual);
+
+        System.out.println(actual);
 
         tearDown();
     }
