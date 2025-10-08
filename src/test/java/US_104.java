@@ -1,15 +1,15 @@
-package utilities;
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utilities.BaseDriver;
+import utilities.ReusableMethods;
 
 import java.time.Duration;
 
-public class US_104 extends BaseDriver{
+public class US_104 extends BaseDriver {
     public WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
     String email = "ytmsc1604@gmail.com";
