@@ -25,6 +25,7 @@ public class TC_0201 extends BaseDriver {
         wait.until(ExpectedConditions.elementToBeClickable(loginBtn));
         loginBtn.click();
 
+        ReusableMethods.threadWait(3);
         WebElement emailInput = driver.findElement(By.xpath("//div/input[2]"));
         wait.until(ExpectedConditions.visibilityOf(emailInput));
         emailInput.sendKeys(email);
@@ -33,19 +34,17 @@ public class TC_0201 extends BaseDriver {
         wait.until(ExpectedConditions.elementToBeClickable(continueButton));
         continueButton.click();
 
+        ReusableMethods.threadWait(2);
         WebElement passwordInput = driver.findElement(By.xpath("(//div/input)[3]"));
         wait.until(ExpectedConditions.visibilityOf(passwordInput));
-        passwordInput.click();
         passwordInput.sendKeys(password);
 
         WebElement loginButton = driver.findElement(By.xpath("//b[text()='Giriş Yap']"));
         wait.until(ExpectedConditions.elementToBeClickable(loginButton));
         loginButton.click();
 
-        WebElement usernameDisplay = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div/a/i")));
+        WebElement usernameDisplay = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div/div/a/i")));
         String actualUsername = usernameDisplay.getText();
         Assert.assertTrue(actualUsername.contains(username));
-
-        tearDown();
     }
 }
