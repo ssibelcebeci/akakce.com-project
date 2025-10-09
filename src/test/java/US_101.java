@@ -1,4 +1,5 @@
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -9,11 +10,15 @@ import utilities.ReusableMethods;
 
 import java.time.Duration;
 
+import static org.junit.Assert.assertTrue;
+
 public class US_101 extends BaseDriver {
 
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(6));
     @Test
     public void positiveLogin(){
+        String email = "testafn0@gmail.com";
+
         driver.get("https://www.akakce.com/");
 
         WebElement loginBtn = driver.findElement(By.xpath("//a[@href='/hesabim/giris/']"));
@@ -22,7 +27,7 @@ public class US_101 extends BaseDriver {
 
         WebElement inputEmail = driver.findElement(By.xpath("//input[@type='email']"));
         wait.until(ExpectedConditions.visibilityOf(inputEmail));
-        inputEmail.sendKeys("testafn0@gmail.com");
+        inputEmail.sendKeys(email);
         ReusableMethods.threadWait(2);
 
         WebElement clickBtn = driver.findElement(By.cssSelector("button > b"));
@@ -46,14 +51,21 @@ public class US_101 extends BaseDriver {
         wait.until(ExpectedConditions.elementToBeClickable(checkBox));
         checkBox.click();
 
-        WebElement createAccount = driver.findElement(By.xpath("button > b"));
+        WebElement createAccount = driver.findElement(By.xpath("//button / b"));
         wait.until(ExpectedConditions.elementToBeClickable(createAccount));
         createAccount.click();
+
+        WebElement emailLogin = driver.findElement(By.xpath("//p[@class='email']"));
+        String stremailLogin = emailLogin.getText();
+
+        Assert.assertEquals(email,stremailLogin);
     }
 
     WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofSeconds(6));
     @Test
     public void negativeLogin(){
+
+        String email = "testafn0@gma.com";
 
         driver.get("https://www.akakce.com/");
 
@@ -92,5 +104,11 @@ public class US_101 extends BaseDriver {
         WebElement createAccount = driver.findElement(By.xpath("button > b"));
         wait.until(ExpectedConditions.elementToBeClickable(createAccount));
         createAccount.click();
+
+        WebElement emailLogin = driver.findElement(By.xpath("//p[@class='email']"));
+        String stremailLogin = emailLogin.getText();
+
+        Assert.assertEquals(email,stremailLogin);
+
     }
 }
