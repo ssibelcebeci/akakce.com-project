@@ -132,4 +132,25 @@ public class US_104 extends BaseDriver {
 
         tearDown();
     }
+
+    @Test
+    public void noInputLogin() {
+        driver.get("https://www.akakce.com/");
+
+        WebElement signIn = driver.findElement(By.xpath("(//a[text()='Giriş Yap'])[1]"));
+        wait.until(ExpectedConditions.elementToBeClickable(signIn));
+        signIn.click();
+
+        WebElement updateBtn = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div > button > b")));
+        wait.until(ExpectedConditions.elementToBeClickable(updateBtn));
+        ReusableMethods.threadWait(2);
+        updateBtn.click();
+
+        WebElement errorText = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='input-wrapper er']")));
+        wait.until(ExpectedConditions.visibilityOf(errorText));
+        String expected = "Lütfen e-posta adresinizi yazın.";
+        String actual = errorText.getAttribute("data-e");
+        Assert.assertEquals("Error text don't match",expected,actual);
+        System.out.println(actual);
+    }
 }
