@@ -49,8 +49,8 @@ public class US_105 extends BaseDriver {
         WebElement verifyHomePage = driver.findElement(By.xpath("//a[@title='Anasayfaya gitmek için tıklayın']"));
         Assert.assertTrue("Ana sayfa bulunamadı", verifyHomePage.isDisplayed());
 
-        WebElement searchProduct = driver.findElement(By.xpath("//input[@type='text']"));
         ReusableMethods.threadWait(3);
+        WebElement searchProduct = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("q")));
         searchProduct.click();
         searchProduct.sendKeys(searchedProduct);
 
@@ -62,10 +62,18 @@ public class US_105 extends BaseDriver {
         Assert.assertTrue("Aranan ürün sayfası bulunamadı", verifySearchedPage.isDisplayed());
         ReusableMethods.threadWait(3);
 
-        WebElement firstProduct = driver.findElement(By.xpath("(//span[text()='Alarm Kur'])[1]"));
+        WebElement firstProduct = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[@title='iPhone 16 Pro 128 GB']/span/span[6]")));
         firstProduct.click();
+        ReusableMethods.threadWait(3);
 
-        WebElement favoritesList = driver.findElement(By.xpath("//a[@title='Favori Listem']"));
+        WebElement orderList=wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//b[text()='Listeleri Düzenle'])")));
+        Assert.assertTrue("Listeleri düzenle yazısı görünmüyor", orderList.isDisplayed());
+
+        WebElement saveList=wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@type='submit']")));
+        saveList.click();
+        ReusableMethods.threadWait(3);
+
+        WebElement favoritesList = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[@title='Favori Listem']")));
         favoritesList.click();
         ReusableMethods.threadWait(3);
 
