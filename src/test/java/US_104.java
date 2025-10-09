@@ -15,6 +15,7 @@ public class US_104 extends BaseDriver {
     String email = "ytmsc1604@gmail.com";
     String password = "Sifretest1$";
     String invalidPassword = "InvalidPassword";
+    String invalidEmail = "invalid@invalid.com";
 
     @Test
     public void positiveLogin() {
@@ -57,8 +58,6 @@ public class US_104 extends BaseDriver {
         String expeted = "Hesabım";
         Assert.assertEquals("No 'Hesabim' text", expeted,actual);
 
-        System.out.println(actual);
-
         tearDown();
     }
 
@@ -98,6 +97,38 @@ public class US_104 extends BaseDriver {
         String actual = errorText.getAttribute("data-e");
         String expeted = "Lütfen şifrenizi kontrol edin.";
         Assert.assertEquals("No error text", expeted, actual);
+
+        tearDown();
+    }
+
+    @Test
+    public void invalidLoginWithInEmail() {
+        driver.get("https://www.akakce.com/");
+
+        WebElement signIn = driver.findElement(By.xpath("(//a[text()='Giriş Yap'])[1]"));
+        wait.until(ExpectedConditions.elementToBeClickable(signIn));
+        signIn.click();
+
+        WebElement loginPanelText = driver.findElement(By.cssSelector("div > b"));
+        wait.until(ExpectedConditions.visibilityOf(loginPanelText));
+
+        WebElement emailText = driver.findElement(By.xpath("//label[text()='E-posta']"));
+        wait.until(ExpectedConditions.visibilityOf(emailText));
+
+        ReusableMethods.threadWait(2);
+        WebElement inputEmail = driver.findElement(By.xpath("//input[@type='email']"));
+        wait.until(ExpectedConditions.visibilityOf(inputEmail));
+        inputEmail.sendKeys(invalidEmail);
+
+        WebElement updateBtn = driver.findElement(By.cssSelector("button > b"));
+        wait.until(ExpectedConditions.elementToBeClickable(updateBtn));
+        updateBtn.click();
+
+        WebElement nameText = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("name")));
+        wait.until(ExpectedConditions.visibilityOf(nameText));
+        String actual = nameText.getAttribute("placeholder");
+        String expected = "Adınızı yazın";
+        Assert.assertEquals("Text do not match 'Adınızı yazın'", expected,actual);
 
         tearDown();
     }
