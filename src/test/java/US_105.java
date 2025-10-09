@@ -17,10 +17,9 @@ public class US_105 extends BaseDriver {
     String searchedProduct = "iPhone 16 pro";
 
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(6));
-    Actions actions= new Actions(driver);
 
     @Test
-    public void login() {
+    public void checkFavoritesList() {
         driver.get("https://www.akakce.com/");
 
         WebElement loginBtn = driver.findElement(By.xpath("(//a[text()='Giriş Yap'])[1]"));
@@ -93,5 +92,7 @@ public class US_105 extends BaseDriver {
 
         WebElement verifyTheProduct = driver.findElement(By.xpath("(//h3[text()='iPhone 16 Pro 128 GB'])"));
         Assert.assertTrue("Ürün favorilerde bulunamadı", verifyTheProduct.isDisplayed());
+
+        tearDown();
     }
 }
