@@ -25,8 +25,7 @@ public class TC_0301 extends BaseDriver {
     WebElement logOutButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@href='#Çık']")));
     ((JavascriptExecutor) driver).executeScript("arguments[0].click();", logOutButton);
 
-    WebElement loginAgain= driver.findElement(By.xpath("//div/button"));
-    wait.until(ExpectedConditions.elementToBeClickable(loginAgain));
+    WebElement loginAgain= wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div/button")));
     loginAgain.click();
 
     WebElement akakceText=wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//b[text()='Akakçe Ayrıcalıkları Sizi Bekliyor!'])")));
