@@ -1,6 +1,7 @@
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -56,9 +57,13 @@ public class US_104 extends BaseDriver {
         wait.until(ExpectedConditions.visibilityOf(myAccountText));
         String actual = myAccountText.getText();
         String expeted = "Hesabım";
-        Assert.assertEquals("No 'Hesabim' text", expeted,actual);
+        Assert.assertEquals("No 'Hesabim' text", expeted, actual);
 
-        tearDown();
+        WebElement usernameDisplay = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div/div/a/i")));
+        usernameDisplay.click();
+
+        WebElement logOutButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@href='#Çık']")));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", logOutButton);
     }
 
     @Test
@@ -72,15 +77,12 @@ public class US_104 extends BaseDriver {
         WebElement loginPanelText = driver.findElement(By.cssSelector("div > b"));
         wait.until(ExpectedConditions.visibilityOf(loginPanelText));
 
-        WebElement emailText = driver.findElement(By.xpath("//label[text()='E-posta']"));
-        wait.until(ExpectedConditions.visibilityOf(emailText));
-
-        ReusableMethods.threadWait(2);
+        ReusableMethods.threadWait(3);
         WebElement inputEmail = driver.findElement(By.xpath("//input[@type='email']"));
         wait.until(ExpectedConditions.visibilityOf(inputEmail));
         inputEmail.sendKeys(email);
 
-        WebElement updateBtn = driver.findElement(By.cssSelector("button > b"));
+        WebElement updateBtn = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("button > b")));
         wait.until(ExpectedConditions.elementToBeClickable(updateBtn));
         updateBtn.click();
 
@@ -97,8 +99,6 @@ public class US_104 extends BaseDriver {
         String actual = errorText.getAttribute("data-e");
         String expeted = "Lütfen şifrenizi kontrol edin.";
         Assert.assertEquals("No error text", expeted, actual);
-
-        tearDown();
     }
 
     @Test
@@ -128,9 +128,7 @@ public class US_104 extends BaseDriver {
         wait.until(ExpectedConditions.visibilityOf(nameText));
         String actual = nameText.getAttribute("placeholder");
         String expected = "Adınızı yazın";
-        Assert.assertEquals("Text do not match 'Adınızı yazın'", expected,actual);
-
-        tearDown();
+        Assert.assertEquals("Text do not match 'Adınızı yazın'", expected, actual);
     }
 
     @Test
@@ -150,7 +148,9 @@ public class US_104 extends BaseDriver {
         wait.until(ExpectedConditions.visibilityOf(errorText));
         String expected = "Lütfen e-posta adresinizi yazın.";
         String actual = errorText.getAttribute("data-e");
-        Assert.assertEquals("Error text don't match",expected,actual);
+        Assert.assertEquals("Error text don't match", expected, actual);
         System.out.println(actual);
+
+        tearDown();
     }
 }
