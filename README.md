@@ -10,7 +10,7 @@ Projede kullanıcı girişleri, sayfa doğrulamaları ve temel fonksiyonel testl
 - Gürhan Ataş 🔧
 - Ramazan Doğan 📝
 - Affan Ergül ⚡
-- İbrahim Hüseynli 🛠️
+- İbrahim Huseynli 🛠️
 
 ## Kullanılan Teknolojiler
 - Java 24
