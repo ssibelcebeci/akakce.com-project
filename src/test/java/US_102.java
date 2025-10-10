@@ -9,7 +9,7 @@ import utilities.ReusableMethods;
 
 import java.time.Duration;
 
-public class TC_0201 extends BaseDriver {
+public class US_102 extends BaseDriver {
 
     String email = "sibel.testedici@gmail.com";
     String password = "Kayseri123";

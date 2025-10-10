@@ -1,9 +1,7 @@
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.BaseDriver;
@@ -65,10 +63,10 @@ public class US_105 extends BaseDriver {
         firstProduct.click();
         ReusableMethods.threadWait(3);
 
-        WebElement orderList=wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//b[text()='Listeleri Düzenle'])")));
+        WebElement orderList = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//b[text()='Listeleri Düzenle'])")));
         Assert.assertTrue("Listeleri düzenle yazısı görünmüyor", orderList.isDisplayed());
 
-        WebElement saveList=wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@type='submit']")));
+        WebElement saveList = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@type='submit']")));
         saveList.click();
         ReusableMethods.threadWait(3);
 
