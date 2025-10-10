@@ -1,4 +1,4 @@
-# Akakce Automation Project
+# akakce.com Automation Project
 
 ## Proje Hakkında
 Bu proje, Akakce web sitesi için Selenium ve Java kullanılarak hazırlanmış bir otomasyon test projesidir.  
