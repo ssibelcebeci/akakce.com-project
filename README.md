@@ -22,15 +22,15 @@ Projede kullanıcı girişleri, sayfa doğrulamaları ve temel fonksiyonel testl
 ## Test Senaryoları
 ## Test Senaryoları
 | Test ID  | Senaryo Açıklaması                      
-|----------|-----------------------------------------
-| US_101   | Hesap oluşturma                        |
-| US_102   | Hesap doğrulama                        |
-| US_103   | Oturumu kapatma                        |
-| US_104   | Oturum açma (pozitif, negatif, boş)    |
-| US_105   | Favoriler kontrolü                     |
-| US_106   | Contact Us kontrolü                    |
-| US_107   | Hesap silme                           |
-|----------|-----------------------------------------
+|----------|--------------------------------------|
+| US_101   | Hesap oluşturma                      |
+| US_102   | Hesap doğrulama                      |
+| US_103   | Oturumu kapatma                      |
+| US_104   | Oturum açma (pozitif, negatif, boş)  |
+| US_105   | Favoriler kontrolü                   |
+| US_106   | Contact Us kontrolü                  |
+| US_107   | Hesap silme                          |
+|----------|--------------------------------------|
 ![giphy](https://github.com/user-attachments/assets/7e1ad312-f2c2-40de-bf5d-8b0600982b34)
 
 
