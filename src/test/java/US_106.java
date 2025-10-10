@@ -9,7 +9,7 @@ import utilities.ReusableMethods;
 
 import java.time.Duration;
 
-public class TC_0601 extends BaseDriver {
+public class US_106 extends BaseDriver {
 
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
