@@ -14,10 +14,15 @@ The framework is structured to ensure maintainability, reusability, and clear re
 ## Contributors
 
 Sibel Cebeci
+
 Merve Çelebi
+
 Gürhan Ataş
+
 Ramazan Doğan
+
 Affan Ergül
+
 İbrahim Huseynli
 
 ## Technologies Used
